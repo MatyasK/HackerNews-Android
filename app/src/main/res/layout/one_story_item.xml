@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/rowView"
+    >
+
+    <TextView
+        android:id="@+id/storyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:text="This is title" />
+
+    <LinearLayout
+        android:id="@+id/linearForText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/storyTitle">
+    <TextView
+        android:id="@+id/storyAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/storyTitle"
+        android:text="MKone"
+        android:gravity="center"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/storyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/storyTitle"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:text="195"
+        android:gravity="center"
+        android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding_5"
+        android:gravity="center_horizontal"
+        android:weightSum="1"
+        android:layout_below="@+id/linearForText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="false"
+        android:layout_centerHorizontal="false">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</RelativeLayout>
