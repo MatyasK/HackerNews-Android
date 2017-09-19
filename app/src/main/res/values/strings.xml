@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Apps</string>
+    <string name="by">by:</string>
+    <string name="score">score:</string>
+    <string name="open">OPEN</string>
 </resources>

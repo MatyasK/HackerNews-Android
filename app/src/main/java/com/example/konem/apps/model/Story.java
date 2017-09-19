@@ -1,5 +1,6 @@
 package com.example.konem.apps.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,6 +10,8 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity
 public class Story {
 
+    @PrimaryKey(autoGenerate = true)
+    private Integer localID;
     @SerializedName("by")
     @Expose
     private String by;
@@ -17,10 +20,10 @@ public class Story {
     private Integer descendants;
     @SerializedName("id")
     @Expose
-    private @PrimaryKey Integer id;
-//    @SerializedName("kids")
-//    @Expose
-//    private List<Integer> kids = null;
+    private Integer id;
+    @SerializedName("kids")
+    @Expose
+    private List<Integer> kids;
     @SerializedName("score")
     @Expose
     private Integer score;
@@ -61,13 +64,13 @@ public class Story {
         this.id = id;
     }
 
-//    public List<Integer> getKids() {
-//        return kids;
-//    }
-//
-//    public void setKids(List<Integer> kids) {
-//        this.kids = kids;
-//    }
+    public List<Integer> getKids() {
+        return kids;
+    }
+
+    public void setKids(List<Integer> kids) {
+        this.kids = kids;
+    }
 
     public Integer getScore() {
         return score;
@@ -109,4 +112,11 @@ public class Story {
         this.url = url;
     }
 
+    public Integer getLocalID() {
+        return localID;
+    }
+
+    public void setLocalID(Integer localID) {
+        this.localID = localID;
+    }
 }

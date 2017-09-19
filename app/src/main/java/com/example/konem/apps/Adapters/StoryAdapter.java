@@ -1,4 +1,4 @@
-package com.example.konem.apps;
+package com.example.konem.apps.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.konem.apps.R;
 import com.example.konem.apps.model.Story;
 
 import java.util.List;
@@ -49,9 +50,9 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View contactView = inflater.inflate(R.layout.one_story_item, parent, false);
+        View storyView = inflater.inflate(R.layout.one_story_item, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(contactView);
+        ViewHolder viewHolder = new ViewHolder(storyView);
         return viewHolder;
     }
 
@@ -65,13 +66,15 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
 
         title.setText(story.getTitle());
         author.setText(story.getBy());
-//        score.setText(story.getScore());
-
+        score.setText(story.getScore().toString());
 
     }
+
 
     @Override
     public int getItemCount() {
         return storyList.size();
     }
+
+
 }

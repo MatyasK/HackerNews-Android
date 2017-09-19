@@ -3,13 +3,15 @@ package com.example.konem.apps.model;
 /**
  * Created by konem on 14/09/2017.
  */
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 
-@Database(entities = {Story.class}, version = 1)
+@Database(entities = {Story.class}, version = 6)
+@TypeConverters({ListConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
@@ -31,4 +33,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public static void destroyInstance() {
         INSTANCE = null;
     }
+
+
 }

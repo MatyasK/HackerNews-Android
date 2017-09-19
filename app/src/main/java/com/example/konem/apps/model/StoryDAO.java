@@ -19,6 +19,9 @@ public interface StoryDAO {
     @Query("select * from story")
     List<Story> getAllStory();
 
+    @Insert
+    void insertAll(List<Story> stories);
+
     @Query("select Story.id from story")
     List<Integer> getIds();
 
@@ -28,9 +31,9 @@ public interface StoryDAO {
 
     @Query("select * from story limit 11 offset :page")
     List<Story> getMore(int page);
-//    @Query("select * from story limit 11")
-//    List<Story> getMoreStory(int page);
 
+    @Query("select * from story where id = :id")
+    Story getStoryByID(int id);
 
     @Insert(onConflict = IGNORE)
     void insertStory(Story story);

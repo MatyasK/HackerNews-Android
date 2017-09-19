@@ -1,5 +1,6 @@
 package com.example.konem.apps.helpers;
 
+import android.renderscript.Sampler;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -25,7 +26,7 @@ public class OkHttp {
     private static final String TAG = "OkHTTPcLass";
 
     public static ArrayList getTopStories(){
-        final ArrayList<String> IDs = new ArrayList<String>();
+        final ArrayList<Integer> IDs = new ArrayList<Integer>();
         Request request = new Request.Builder()
                 .url("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty")
                 .build();
@@ -42,7 +43,7 @@ public class OkHttp {
                     String responseData = response.body().string();
                     JSONArray array = new JSONArray(responseData);
                     for (int i = 0; i < array.length(); i++){
-                        IDs.add(array.get(i).toString());
+                        IDs.add(Integer.parseInt(array.get(i).toString()));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -1,20 +1,24 @@
 package com.example.konem.apps.activities;
 
 
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.example.konem.apps.R;
-import com.example.konem.apps.StoryAdapter;
+import com.example.konem.apps.Adapters.StoryAdapter;
 import com.example.konem.apps.helpers.EndlessRecyclerOnScrollListener;
+import com.example.konem.apps.helpers.ItemClickSupport;
 import com.example.konem.apps.model.AppDatabase;
 import com.example.konem.apps.model.Story;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -41,7 +45,6 @@ public class ActMain extends AppCompatActivity {
         EndlessRecyclerOnScrollListener scrollListener = new EndlessRecyclerOnScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-//                List<Story> moreStory = Contact.createContactsList(10, page);
                 Log.d(TAG, "onLoadMore: page: " + page );
                 List<Story> moreStory = mDb.storyModel().getMore(page*12);
                 int curSize = adapter.getItemCount();
@@ -57,5 +60,15 @@ public class ActMain extends AppCompatActivity {
             }
         };
         rvItems.addOnScrollListener(scrollListener);
+
+
+        ItemClickSupport.addTo(rvItems).setOnItemClickListener(
+                new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                        ActDetail_.intent(getApplicationContext()).extra("story", allStory.get(position).getId()).start();
+                    }
+                }
+        );
     }
 }
